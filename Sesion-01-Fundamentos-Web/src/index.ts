@@ -62,7 +62,15 @@ export type Headers = Record<string, string>;
  */
 export function parseUrl(url: string): UrlParts {
   // TODO: tu implementación aquí
-  throw new Error("Not implemented");
+  //Mi implementación, día 1
+  const u = new URL(url);
+  return {
+    protocol: u.protocol,
+    host: u.host,
+    pathname: u.pathname,
+    search: u.search,
+    query: Array.from(u.searchParams.entries()),
+  };
 }
 
 /**
