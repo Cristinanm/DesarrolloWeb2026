@@ -122,7 +122,21 @@ export function classifyStatus(code: number): StatusCategory {
  */
 export function parseHeaders(text: string): Headers {
   // TODO: tu implementación aquí
-  throw new Error("Not implemented");
+  //Día 3 implmementación
+  const headers: Headers = {};
+  const lineas = text.split("\n");
+  for (const linea of lineas) {
+    const lineasinespacios = linea.trim();
+    if (lineasinespacios && lineasinespacios.includes(":")) {
+      const partes = lineasinespacios.split(":");
+      const nombre = partes[0].trim();
+      const valor = partes[1].trim();
+
+      headers[nombre] = valor;
+    }
+  }
+
+  return headers;
 }
 
 /**
@@ -144,8 +158,16 @@ export function summarizeRequest(
   status: number,
   headersText: string,
 ): string {
-  // TODO: tu implementación aquí
-  throw new Error("Not implemented");
+  // TODO: tu implementación 
+  const urlAnalizada = parseUrl(url);
+  const estadoClasificado = classifyStatus(status);
+  const headers = parseHeaders(headersText);
+  return `Resumen: 
+          URL: ${url}
+          Host: ${urlAnalizada.host}
+          NumeroEstado: ${status}
+          Estado: ${estadoClasificado}
+          Headers: ${JSON.stringify(headers, null, 2)}`;
 }
 
 // ---------------------------------------------------------------------------
