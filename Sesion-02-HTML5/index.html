@@ -12,46 +12,54 @@
 
   <!-- TODO: header con navegacion a las otras 3 paginas -->
   <header>
-    <h1>Mi Sitio</h1>
+    <h1>Películas favoritas</h1>
     <nav>
       <ul>
         <li><a href= "index.html"> Inicio</a></li>
-        <li><a href = "pagina1.html">pagina 1</a></li>
-        <li><a href = "pagina2.html">pagina 2</a></li>
-        <li><a href = "pagina3.html">pagina 3</a></li>
+        <li><a href = "pagina1.html">Romance</a></li>
+        <li><a href = "pagina2.html">Comedia</a></li>
+        <li><a href = "pagina3.html">Terror</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <article>
-      <h2>Bienvenido</h2>
+      <h2>Bienvenido a mi sitio de clasificación de peliculas favoritas</h2>
 
       <!-- TODO: usa <figure> + <figcaption> para una imagen con alt y loading="lazy" -->
-      <img src="https://via.placeholder.com/800x400"
+      <figure>
+        <img src="https://i.redd.it/ubu4byqy7a451.png"
            alt="Imagen de bienvenida"
            width="800" height="400"
            loading="lazy">
-
-      <p>Parrafo de introduccion. Lorem ipsum dolor sit amet.</p>
+          <figcaption>Películas</figcaption>
+      </figure>
+      <p>Bienvenido a mi sitio web, donde comparto algunas de mis películas favoritas y recomendaciones para quienes disfrutan del cine.</p>
 
       <!-- TODO: usa <dialog> + un boton con command/commandfor (Invoker Commands API) -->
       <dialog id="bienvenida">
-        <h3>Hola!</h3>
-        <p>Esto es un dialog modal nativo.</p>
+        <h3>¿Sabías que...?</h3>
+        <p>Diversos estudios indican que las películas románticas también son disfrutadas por muchos hombres, aunque existe el estereotipo de que solo interesan al público femenino.</p>
         <form method="dialog">
           <button>Cerrar</button>
         </form>
       </dialog>
       <button command="show-modal" commandfor="bienvenida">
-        Abrir dialog
+        ver curiosidades
       </button>
 
       <!-- TODO: usa popover para un menu o tooltip -->
-      <button popovertarget="menu-ayuda">?</button>
+      <button popovertarget="menu-ayuda">Recomendación</button>
       <div id="menu-ayuda" popover>
-        <h4>Ayuda</h4>
-        <p>Contenido del popover...</p>
+        <h4>Recomendación</h4>
+        <ul>
+          <li>Título: Orgullo y Prejuicio</li>
+          <li>Año: 2005</li>
+          <li>Género: Romance</li>
+          <li>Duración: 120 minutos</li>
+        </ul>
+        <p>¡Que esperas para verla!</p>
       </div>
 
       <!-- TODO: formulario con al menos 3 inputs (text, email, etc.) -->
