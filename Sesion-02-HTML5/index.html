@@ -14,6 +14,7 @@
   <header>
     <h1>Películas favoritas</h1>
     <nav>
+      <h3>Opciones</h3>
       <ul>
         <li><a href= "index.html"> Inicio</a></li>
         <li><a href = "pagina1.html">Romance</a></li>
@@ -24,8 +25,13 @@
   </header>
 
   <main>
+    <aside>
+    <h3>Categorías del sitio</h3>
+    <p>Explora las diferentes secciones para descubrir películas de romance, comedia y terror.</p>
+  </aside>
+
     <article>
-      <h2>Bienvenido a mi sitio de clasificación de peliculas favoritas</h2>
+      <h2>Bienvenido a mi sitio de películas favoritas</h2>
 
       <!-- TODO: usa <figure> + <figcaption> para una imagen con alt y loading="lazy" -->
       <figure>
@@ -63,9 +69,18 @@
       </div>
 
       <!-- TODO: formulario con al menos 3 inputs (text, email, etc.) -->
+       <h3>Comparte tu película favorita</h3>
       <form action="#" method="POST">
-        <label for="nombre">Nombre:</label>
-        <input id="nombre" type="text" name="nombre" required minlength="3">
+        <label for="pelicula">Nombre de la Pelicula:</label>
+        <input id="pelicula" type="text" name="pelicula" required>
+        <label for="genero">Genero:</label>
+        <select id ="genero" name="genero" required>
+          <option value="">Selecciona una opción</option>
+          <option value="romance">Romance</option>
+          <option value="comedia">Comedia</option>
+          <option value="terror">Terror</option>
+          <option value="otro">Otro</option>
+        </select>
 
         <label for="email">Email:</label>
         <input id="email" type="email" name="email" required>
