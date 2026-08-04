@@ -1,14 +1,63 @@
+body{
+    margin: 0;
+    background-color:#FF8DA1;
+}
 /* TODO: Reset y estilos base */
+.container{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
 
 /* TODO: Galería de productos */
 /* Desktop (>=1024px): 3 columnas usando CSS Grid */
 /* Mobile (<768px): 1 columna con scroll vertical */
+.galeria{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:20px
+}
+
+@media(max-width: 768px){
+    .galeria{
+        grid-template-columns: 1fr;
+    }
+    
+}
 
 /* TODO: Estilo de cada tarjeta de producto */
 /* - Imagen ocupa el ancho completo de la tarjeta */
 /* - Nombre del producto en negrita */
 /* - Precio destacado */
 /* - Botón "Comprar" estilizado con hover effect */
+.producto{
+    background-color:#FFC5D3;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+
+}
+
+.producto img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.producto-info h2{
+    font-weight: bold;
+}
+
+.precio{
+    font-weight: bold;
+    font-size: 25px;
+    color:forestgreen
+}
 
 /* TODO: To-Do List */
 /* - Lista sin marcadores (list-style: none) */
