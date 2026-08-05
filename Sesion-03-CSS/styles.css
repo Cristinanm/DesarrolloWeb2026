@@ -1,3 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+     font-family: "Calistoga", serif;
+     font-size: 45px;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
 body{
     margin: 0;
     background-color:#FF8DA1;
@@ -21,12 +36,6 @@ body{
     gap:20px
 }
 
-@media(max-width: 768px){
-    .galeria{
-        grid-template-columns: 1fr;
-    }
-    
-}
 
 /* TODO: Estilo de cada tarjeta de producto */
 /* - Imagen ocupa el ancho completo de la tarjeta */
@@ -56,7 +65,36 @@ body{
 .precio{
     font-weight: bold;
     font-size: 25px;
-    color:forestgreen
+    color:purple
+}
+
+.btn-comprar{
+    border-radius: 10px;
+    background-color: rgb(21, 218, 21);
+    color:white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    height: 40px;
+    width: 110px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: pulse 4s infinite;
+}
+
+.btn-comprar:hover{
+    background-color: rgb(34, 214, 234);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* TODO: To-Do List */
@@ -64,6 +102,22 @@ body{
 /* - Checkbox con label accesible */
 /* - Tareas alternadas con color de fondo (zebra striping) */
 
+.todo-list{
+    display: grid;
+
+}
+
+.tareas{
+    list-style: none;
+}
+
 /* TODO: Diseño responsivo */
 /* - Usar @media queries para cambiar entre mobile y desktop */
 /* - La galería debe ser responsiva usando Grid + media queries */
+
+@media(max-width: 768px){
+    .galeria{
+        grid-template-columns: 1fr;
+    }
+    
+}
