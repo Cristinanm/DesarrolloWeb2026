@@ -10,12 +10,16 @@ h1{
      font-size: 45px;
     font-weight: 500;
     font-style: normal;
+     margin: 30px 5px;
 
+}
+h2{
+    margin: 30px 30px;
 }
 
 body{
     margin: 0;
-    background-color:#FF8DA1;
+    background-color:#ffa9b9;
 }
 /* TODO: Reset y estilos base */
 .container{
@@ -38,10 +42,6 @@ body{
 
 
 /* TODO: Estilo de cada tarjeta de producto */
-/* - Imagen ocupa el ancho completo de la tarjeta */
-/* - Nombre del producto en negrita */
-/* - Precio destacado */
-/* - Botón "Comprar" estilizado con hover effect */
 .producto{
     background-color:#FFC5D3;
     border: 1px solid black;
@@ -70,7 +70,7 @@ body{
 
 .btn-comprar{
     border-radius: 10px;
-    background-color: rgb(21, 218, 21);
+    background-color: #c8b2ea;;
     color:white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
@@ -82,7 +82,7 @@ body{
 }
 
 .btn-comprar:hover{
-    background-color: rgb(34, 214, 234);
+    background-color: rgb(21, 218, 21); 
 }
 
 @keyframes pulse {
@@ -98,22 +98,31 @@ body{
 }
 
 /* TODO: To-Do List */
-/* - Lista sin marcadores (list-style: none) */
-/* - Checkbox con label accesible */
-/* - Tareas alternadas con color de fondo (zebra striping) */
 
 .todo-list{
-    display: grid;
+     margin: 30px 30px;
+     border: 3px dotted; 
+     background-color: #FFC5D3;
+     border-radius: 10px;
+
 
 }
 
 .tareas{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     list-style: none;
+    margin: 30px 30px;
+    li:nth-child(odd)  { background: #FFEE8C; }
+    li:nth-child(even) { background: #C3B1E1; }
+}
+
+label{
+    font-size: 20px;
 }
 
 /* TODO: Diseño responsivo */
-/* - Usar @media queries para cambiar entre mobile y desktop */
-/* - La galería debe ser responsiva usando Grid + media queries */
 
 @media(max-width: 768px){
     .galeria{
