@@ -59,7 +59,25 @@ function leerBody(req) {
  * @returns {{ nombre: string, puerto: number }}
  */
 export function parsearArgumentos(argv) {
-    throw new Error('Not implemented: parsearArgumentos');
+    const args = argv.slice(2);
+
+    let nombre= "invitado";
+    let puerto = 3000;
+
+    const IndiceNombre = args.findIndex(args => args === "--nombre");
+    const IndicePuerto = args.findIndex(args => args === "--puerto");
+
+    if(IndiceNombre !== -1){
+        nombre = args[IndiceNombre +1];
+    }
+    if(IndicePuerto !== -1){
+        puerto = Number(args[IndicePuerto + 1]);
+    }
+
+    return {
+        nombre, puerto
+    };
+    
 }
 
 /**
