@@ -85,7 +85,7 @@ export async function filtrarLogs(origen, destino, texto) {
  * @returns {Promise<string[]>}
  */
 export async function leerLineas(ruta) {
-    throw new Error('Not implemented: leerLineas');
+     throw new Error('Not implemented: filtrarLogs');
 }
 
 /**
@@ -96,7 +96,8 @@ export async function leerLineas(ruta) {
  * @returns {string}
  */
 export function rutaAbsoluta(rutaRelativa) {
-    throw new Error('Not implemented: rutaAbsoluta');
+    return join(__dirname, rutaRelativa);
+
 }
 
 /**
@@ -108,5 +109,21 @@ export function rutaAbsoluta(rutaRelativa) {
  * @returns {Record<string, string>}
  */
 export function parsearEnv(contenido) {
-    throw new Error('Not implemented: parsearEnv');
+    const resultado = {};
+
+    const lineas = contenido.split('\n');
+
+    for (const linea of lineas) {
+        const lineaLimpia = linea.trim();
+
+        if (lineaLimpia === '' || lineaLimpia.startsWith('#')) {
+            continue;
+        }
+
+        const [clave, valor] = lineaLimpia.split('=');
+
+        resultado[clave.toUpperCase()] = valor;
+    }
+
+    return resultado;
 }
