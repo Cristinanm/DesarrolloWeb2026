@@ -90,7 +90,15 @@ export function parsearArgumentos(argv) {
  * @returns {{ puerto: number, nombreApp: string, archivoDatos: string }}
  */
 export function obtenerConfig(env) {
-    throw new Error('Not implemented: obtenerConfig');
+    const puerto = env.PORT ? Number(env.PORT) : 3000;
+    const nombreApp = env.NOMBRE_APP ? env.NOMBRE_APP : "mensajes-api";
+    const archivoDatos = env.ARCHIVO_DATOS ? env.ARCHIVO_DATOS : "data/mensajes.json";
+
+    return {
+        puerto,
+        nombreApp,
+        archivoDatos
+    };
 }
 
 /**
@@ -98,7 +106,17 @@ export function obtenerConfig(env) {
  * @returns {{ plataforma: string, nucleos: number, memoriaLibreMB: number, hostname: string }}
  */
 export function infoSistema() {
-    throw new Error('Not implemented: infoSistema');
+    const plataforma =  os.platform(); 
+    const nucleos= os.cpus().length;
+    const memoriaLibreMB = Math.round(os.freemem() / 1024 / 1024);
+    const hostname = os.hostname();
+
+    return{
+        plataforma,
+        nucleos,
+        memoriaLibreMB,
+        hostname
+    };
 }
 
 /**
