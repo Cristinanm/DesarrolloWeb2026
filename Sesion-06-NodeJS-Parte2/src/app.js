@@ -85,7 +85,18 @@ export async function filtrarLogs(origen, destino, texto) {
  * @returns {Promise<string[]>}
  */
 export async function leerLineas(ruta) {
-     throw new Error('Not implemented: filtrarLogs');
+    const stream = createReadStream(ruta, {encoding:'utf-8'});
+
+  let contenido = '';
+
+  for await (const chunk of stream){
+    contenido += chunk;
+  }
+
+  return contenido
+    .split('\n')
+    .map(linea => linea.trim())
+    .filter(linea => linea.length > 0);
 }
 
 /**
