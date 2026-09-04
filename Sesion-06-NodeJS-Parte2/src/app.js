@@ -73,7 +73,35 @@ export function generarId() {
  * @returns {Promise<number>} cantidad de líneas que coincidieron (0 si no hay).
  */
 export async function filtrarLogs(origen, destino, texto) {
-    throw new Error('Not implemented: filtrarLogs');
+    let contador = 0;
+    let pendiente = "";
+
+    const entrada = createReadStream(origen, { encoding: "utf-8" });
+
+    async function* filtrar(fuente) {
+        for await (const chunk of fuente) {
+            pendiente += chunk;
+            const lineas = pendiente.split("\n");
+            pendiente = lineas.pop();
+
+            for (const linea of lineas) {
+
+                if(linea.includes(texto)){
+                    contador++;
+                    yield linea + "\n";
+                }
+            }
+        }
+
+        if (pendiente.includes(texto)) {
+            contador++;
+            yield pendiente + "\n";
+        }
+    }
+
+    const salida = createWriteStream(destino, { encoding: "utf-8" });
+    await pipeline(entrada, filtrar ,salida);
+    return contador;
 }
 
 /**
@@ -84,10 +112,12 @@ export async function filtrarLogs(origen, destino, texto) {
  * @param {string} ruta
  * @returns {Promise<string[]>}
  */
+
 export async function leerLineas(ruta) {
-    const stream = createReadStream(ruta, {encoding:'utf-8'});
+    const archivo = createReadStream(ruta, {encoding:'utf-8'});
 
   let contenido = '';
+  const stream = Readable.from(archivo);
 
   for await (const chunk of stream){
     contenido += chunk;
