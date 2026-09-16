@@ -34,7 +34,7 @@ export class RepositorioAlumnos {
      * @returns {Alumno[]}
      */
     listar() {
-        throw new Error('TODO: implementar RepositorioAlumnos.listar()');
+        return [...this.alumnos]
     }
 
     /**
@@ -43,7 +43,8 @@ export class RepositorioAlumnos {
      * @returns {Alumno | undefined}
      */
     obtener(id) {
-        throw new Error('TODO: implementar RepositorioAlumnos.obtener()');
+        const alumnoId = this.alumnos.find( alumnoId => alumnoId.id === id)
+        return alumnoId;
     }
 
     /**
@@ -52,7 +53,9 @@ export class RepositorioAlumnos {
      * @returns {Alumno}
      */
     crear(datos) {
-        throw new Error('TODO: implementar RepositorioAlumnos.crear()');
+        let nuevoAlumno = {id:`a-${this.siguienteId++}`,...datos}
+        this.alumnos.push(nuevoAlumno);
+        return nuevoAlumno;
     }
 
     /**
@@ -62,7 +65,22 @@ export class RepositorioAlumnos {
      * @returns {Alumno | undefined} el alumno actualizado, o undefined si no existe
      */
     actualizar(id, datos) {
-        throw new Error('TODO: implementar RepositorioAlumnos.actualizar()');
+        let alumno = this.obtener(id)
+
+        if(!alumno){
+            return undefined;
+        }
+
+        alumno = {
+            ...alumno,
+            ...datos
+        }
+
+        let posicion = this.alumnos.findIndex(alumnoI => alumnoI.id === id)
+        this.alumnos[posicion] = alumno
+
+        return alumno;
+        
     }
 
     /**
@@ -71,6 +89,13 @@ export class RepositorioAlumnos {
      * @returns {boolean} true si lo eliminó, false si no existía
      */
     eliminar(id) {
-        throw new Error('TODO: implementar RepositorioAlumnos.eliminar()');
+        let posicion = this.alumnos.findIndex(IndAlumno => IndAlumno.id === id)
+
+        if(posicion ===-1){
+            return false
+        }else{
+            this.alumnos.splice(posicion, 1)
+            return true;
+        }
     }
 }
