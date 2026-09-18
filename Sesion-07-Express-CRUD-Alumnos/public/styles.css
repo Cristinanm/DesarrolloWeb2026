@@ -30,7 +30,7 @@ header {
 header h1 { margin: 0 0 4px 0; }
 header p { margin: 0; opacity: 0.85; font-size: 14px; }
 
-main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+main { max-width: 1400px; margin: 24px auto; padding: 0 16px; }
 
 table {
     width: 100%;
@@ -39,34 +39,87 @@ table {
     margin-top: 16px;
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
-th { background: #ede7f6; }
-tbody tr:hover { background: #f9fafb; }
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 16px;
+}
+
+th {
+    background: #ede7f6;
+    font-weight: 700;
+    font-size: 16px;
+}
+tbody tr {
+    transition: background 0.2s;
+}
+
+tbody tr:hover {
+    background: #f3e8ff;
+}
 
 button {
     cursor: pointer;
     border: none;
     border-radius: 6px;
-    padding: 8px 14px;
-    font-size: 14px;
+    padding: 10px 16px;
+    font-size: 15px;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
-#btnNuevo { background: var(--color-primario); color: white; }
+button:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+#btnNuevo { background: var(--color-primario); color: white; padding: 11px 18px; font-weight: 600; }
 
 dialog {
     border: none;
     border-radius: 10px;
     padding: 20px 24px;
-    min-width: 340px;
+    min-width: 420px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 }
 
 dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
 
+.eliminar{
+    background: #c62828;
+    color: white;
+}
+.editar{
+    background: blue;
+    color: white;
+}
+
+#btnCancelar{
+    background-color: rgb(0, 25, 139);
+    color: white;
+
+}
+#btnConfirmarEliminar{
+    background: #c62828;
+    color: white;
+}
+
+#btnGuardar {
+    background: #16a34a;
+    color: white;
+}
+
+#btnCancelarEliminar{
+    background: rgb(14, 58, 189);
+    color: white;
+}
+
 label { display: block; margin-top: 10px; font-size: 14px; font-weight: 600; }
-input { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #cbd5e1; border-radius: 6px; }
+input { width: 100%;  padding: 11px 12px; font-size: 15px; margin-top: 4px; border: 1px solid #cbd5e1; border-radius: 6px; }
 
 .acciones { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
 
