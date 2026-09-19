@@ -1,9 +1,6 @@
 /**
  * app.js — Lógica del sitio (Fetch + Dialogs)
  * Tarea Sesión 7 · Desarrollo Web · UMG
- *
- * TODO: implementa las funciones marcadas. La API exige el header
- * `x-api-key` en las operaciones de escritura (POST, PUT, DELETE).
  */
 
 const API = '/alumnos';
@@ -28,8 +25,7 @@ let idEnEdicion = null;        // null = crear | string = editar
 let idAEliminar = null;
 
 /**
- * TODO: GET /alumnos y pinta las filas en la tabla.
- * Cada fila debe incluir botones "Editar" y "Eliminar".
+ GET /alumnos .
  */
 async function cargarAlumnos() {
     let respuesta = await fetch(API);
@@ -67,10 +63,6 @@ async function cargarAlumnos() {
    
 }
 
-/**
- * TODO: limpia el formulario, pone el título "Nuevo alumno",
- * idEnEdicion = null y abre dialogoForm con showModal().
- */
 function abrirDialogoNuevo() {
     form.reset();
     idEnEdicion = null;
@@ -78,11 +70,6 @@ function abrirDialogoNuevo() {
     dialogoForm.showModal();
 }
 
-/**
- * TODO: precarga los datos del alumno en el formulario,
- * guarda su id en idEnEdicion, cambia el título a "Editar alumno"
- * y abre dialogoForm.
- */
 async function abrirDialogoEditar(id) {
     let respuesta = await fetch(`${API}/${id}`);
     let alumno = await respuesta.json();
@@ -97,10 +84,6 @@ async function abrirDialogoEditar(id) {
 
 /**
  * TODO: lee los campos del formulario y llama a la API.
- *   - Si idEnEdicion es null → POST /alumnos            (201)
- *   - Si hay id             → PUT /alumnos/:id          (200)
- * Usa cabeceras() y JSON.stringify(). Al terminar: cierra el dialog,
- * recarga la lista y muestra un mensaje.
  */
 async function guardarAlumno(event) {
     event.preventDefault();
@@ -146,16 +129,14 @@ async function guardarAlumno(event) {
 
 /**
  * TODO: abre dialogoEliminar guardando el id, y al confirmar hace
- * DELETE /alumnos/:id con cabeceras(false). Luego recarga y avisa.
+ * DELETE
  */
 function eliminarAlumno(id) {
     idAEliminar = id;
     dialogoEliminar.showModal();
 }
 
-/**
- * TODO: helper para mostrar mensajes (error en rojo, éxito en verde).
- */
+
 function mostrarMensaje(texto, tipo = 'ok') {
     mensaje.textContent= texto;
     mensaje.className= tipo;

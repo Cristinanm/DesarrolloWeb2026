@@ -1,10 +1,6 @@
 /**
  * app.js — Servidor Express (API REST + sitio estático)
  * Tarea Sesión 7 · Desarrollo Web · UMG
- *
- * TODO: implementa los middlewares y las rutas marcadas.
- * Los tests de `tests/api.test.js` describen exactamente el contrato
- * que debe cumplir cada endpoint (son tu guía).
  */
 
 import express from 'express';
@@ -21,14 +17,6 @@ export const __dirname = dirname(__filename);
 
 /**
  * "Autenticación falsa": exige el header `x-api-key`.
- *
- * TODO:
- *   - Lee el header con req.get('x-api-key')
- *   - Compáralo con process.env.API_KEY (si no está definida usa 'umg-2026')
- *   - Si no coincide → res.status(401).json({ error: 'No autorizado' })
- *   - Si coincide    → next()
- *
- * @type {import('express').RequestHandler}
  */
 export function autenticacionFalsa(req, res, next) {
     let clave = req.get('x-api-key');
@@ -43,15 +31,6 @@ export function autenticacionFalsa(req, res, next) {
 
 /**
  * Validación básica del cuerpo de un alumno.
- *
- * TODO: valida que
- *   - `nombre`, `apellido` y `email` sean strings no vacíos (trim)
- *   - `email` contenga '@'
- *   - `edad`, si viene, sea un número mayor o igual a 0
- *   Si algo falla responde 400 con { error: '<mensaje>' }.
- *   Si todo está bien, llama a next().
- *
- * @type {import('express').RequestHandler}
  */
 export function validarAlumno(req, res, next) {
     const {nombre, apellido, email,edad} = req.body;
@@ -82,10 +61,6 @@ export function validarAlumno(req, res, next) {
 
 /**
  * Crea la app de Express con sus rutas.
- * Recibe el repositorio por parámetro (inyección de dependencias).
- *
- * @param {import('./repositorio.js').RepositorioAlumnos} repositorio
- * @returns {import('express').Express}
  */
 export function crearApp(repositorio) {
     const app = express();
